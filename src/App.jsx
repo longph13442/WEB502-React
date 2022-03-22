@@ -1,45 +1,63 @@
 import { useState } from 'react'
+import react from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+const Show = () =>{
+  return<div>abcd</div>
 }
+
+function App(){
+  const [count,setCount] = useState(10);
+  const [name, setName] = useState("Long");
+  const [boolean, setboolean] = useState(false);
+  const [myStatus, setMystatus] = useState(false);
+  const [product, setProduct] = useState([{name:"sp a", id:1},{name: "sp b", id:2}]);
+
+  // const change= () =>{
+  //   console.log("Đã thêm vào giỏ hàng !");
+  //   setCount(11);
+  // }
+  // const changeStatus = () =>{
+  //   setMystatus(true);
+  // }
+
+  // xoas product
+  const remove= (id)=>{
+    console.log(id);
+    const newProduct = product.filter(item => item.id !== id); //thực hiện xóa
+    setProduct(newProduct); // lưu trữ lại mảng sau khi xóa
+    console.log(newProduct);
+  }
+
+  return <div>
+    Number : {count} <br />
+    String : {name} <br />
+    Boolean : {boolean ? "Đã có ny" : "Chưa có ny"}<br />
+    {/* Array : {product.map(item => item.name) } <br/> */}
+
+    Products: {myStatus && <div>
+      Array : {product.map(item => <div>{item.name}
+       <button onClick={()=> remove(item.id)}>delete</button> </div>  ) }
+    </div> }
+
+    <Show />
+
+    <button onClick={()=> setCount(count+1)}>Click me</button>
+    <button onClick={() => setMystatus(!myStatus)}>ChangeStatus</button>
+
+  </div>
+}
+// class App extends react.Component{
+//   state ={
+//     a:10
+//   }
+//   render(){
+//     return <div>
+//       {this.state.a}
+//       <Show /> App
+//       </div>
+//   }
+// }
 
 export default App
