@@ -2,6 +2,7 @@ import { useState } from 'react'
 import react from 'react'
 import logo from './logo.svg'
 import './App.css'
+import Box from './component/box'
 
 const Show = () =>{
   return<div>abcd</div>
@@ -9,7 +10,7 @@ const Show = () =>{
 
 function App(){
   const [count,setCount] = useState(10);
-  const [name, setName] = useState("Long");
+  const [color, setName] = useState("green");
   const [boolean, setboolean] = useState(false);
   const [myStatus, setMystatus] = useState(false);
   const [product, setProduct] = useState([{name:"sp a", id:1},{name: "sp b", id:2}]);
@@ -32,7 +33,7 @@ function App(){
 
   return <div>
     Number : {count} <br />
-    String : {name} <br />
+    String : <Box color={color} /> <br />
     Boolean : {boolean ? "Đã có ny" : "Chưa có ny"}<br />
     {/* Array : {product.map(item => item.name) } <br/> */}
 
@@ -48,16 +49,6 @@ function App(){
 
   </div>
 }
-// class App extends react.Component{
-//   state ={
-//     a:10
-//   }
-//   render(){
-//     return <div>
-//       {this.state.a}
-//       <Show /> App
-//       </div>
-//   }
-// }
+
 
 export default App
